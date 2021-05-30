@@ -1,0 +1,11 @@
+import java.util.Arrays;
+
+global com.app.brpm.model.ProductDetails productDetails;
+dialect  "mvel"
+
+rule "generate a packing slip for shipping"
+    when
+        ProductDetails(type.equalsIgnoreCase("physical product"));
+    then
+        productDetails.setActions(Arrays.asList("generate a packing slip for shipping", "generate a commission payment to the agent"));
+end
