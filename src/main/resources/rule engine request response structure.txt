@@ -1,0 +1,41 @@
+{
+	serviceId: "Payment",
+	products: [ 
+		{
+			type:"Physical",
+			name:"Test"
+		},
+		{
+			type:"book",
+			name:"Test"
+		},
+		{
+			type:"Membership",
+			name:"Test"
+		},
+		{
+			type:"Upgrade Membership",
+			name:"Test"
+		},
+		{
+			type:"video"
+			name:"Test"
+		}
+		
+	]
+	
+}
+
+
+response:
+
+{
+	serviceId: "Payment",
+	products:[
+		{
+			type:"Physical",
+			name:"Test",
+			action: "Test action"
+		},
+	]
+}
