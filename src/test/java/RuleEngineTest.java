@@ -167,4 +167,44 @@ public class RuleEngineTest {
         String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
         assertEquals(expectedResponseBody, actualResponseBody);
     }
+
+
+
+    /*
+     Test multipel product types
+     */
+    @Test
+    public void verifyScenarioMultipleProductTypes() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails videoProductDetails = new ProductDetails();
+        videoProductDetails.setName("Learning to Ski");
+        videoProductDetails.setType("video");
+//        orderDetails.setProductDetails(Arrays.asList(videoProductDetails));
+
+        ProductDetails bookProductDetails = new ProductDetails();
+        bookProductDetails.setName("Art of War");
+        bookProductDetails.setType("book");
+//        orderDetails.getProductDetails().add(bookProductDetails);
+
+        ProductDetails physicalProductDetails = new ProductDetails();
+        physicalProductDetails.setName("Table");
+        physicalProductDetails.setType("physical product");
+//        orderDetails.getProductDetails().add(physicalProductDetails);
+
+        orderDetails.setProductDetails(Arrays.asList(videoProductDetails, bookProductDetails, physicalProductDetails));
+
+        MvcResult mvcResult = sendRequest(orderDetails);
+
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+
+        videoProductDetails.setActions(Arrays.asList("Add Free 'First Aid Video' to Packing Slip"));
+        bookProductDetails.setActions(Arrays.asList("create duplicate parking slip for the royalty department",
+                "generate a commission payment to the agent"));
+        physicalProductDetails.setActions(Arrays.asList("generate a packing slip for shipping", "generate a commission payment to the agent"));
+
+
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
 }

@@ -29,3 +29,37 @@ http://localhost:8080/swagger-ui.html
 ### Frameworks Used:
 1. Spring Boot for Rest API
 2. Drools Business Rule Engine
+
+
+### Request Body :
+######(Note: You can pass multiple products in one request using products array):
+```json
+{
+    serviceId: "Payment",
+    products: [
+        {
+            type:"video",
+            name:"Learning to Ski"
+        }
+    ]
+}
+```
+
+### Expected Response as below for above request:
+######(Note: actions object will contain the decision/answer from Rule Engine):
+```json
+{
+  serviceId: "Payment",
+  products:[
+    {
+        type: "Physical",
+        name: "Test",
+        actions: [
+              "Upgrade membership",
+              "Send Email notification"
+        ]
+    }
+  ]
+}
+
+```

@@ -24,10 +24,12 @@ public class RulesServiceImpl implements RulesService {
                 kieSession.setGlobal("productDetails", productDetails);
                 kieSession.insert(productDetails);
                 kieSession.fireAllRules();
-                kieSession.dispose();
             }
+            kieSession.dispose();
+
         }catch(Exception e)
         {
+            e.printStackTrace();
             throw new InvalidRequestException("Error in processing rules..");
         }
     }
