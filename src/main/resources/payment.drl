@@ -9,3 +9,11 @@ rule "generate a packing slip for shipping"
     then
         productDetails.setActions(Arrays.asList("generate a packing slip for shipping", "generate a commission payment to the agent"));
 end
+
+rule "create a duplicate packing slip for the royalty department"
+    when
+        ProductDetails(type.equalsIgnoreCase("book"));
+    then
+        productDetails.setActions(Arrays.asList("create duplicate parking slip for the royalty department",
+         "generate a commission payment to the agent"));
+end

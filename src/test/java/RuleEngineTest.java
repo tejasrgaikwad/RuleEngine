@@ -63,4 +63,27 @@ public class RuleEngineTest {
         String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
         assertEquals(expectedResponseBody, actualResponseBody);
     }
+
+
+
+    /*
+    rule2 "create a duplicate packing slip for the royalty department"
+     */
+    @Test
+    public void verifyScenarioProductTypeBook() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName("xyz");
+        productDetails.setType("book");
+        orderDetails.setProductDetails(Arrays.asList(productDetails));
+
+        MvcResult mvcResult = sendRequest(orderDetails);
+
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+        productDetails.setActions(Arrays.asList("create duplicate parking slip for the royalty department",
+                "generate a commission payment to the agent"));
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
 }
