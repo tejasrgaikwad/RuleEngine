@@ -17,3 +17,34 @@ rule "create a duplicate packing slip for the royalty department"
         productDetails.setActions(Arrays.asList("create duplicate parking slip for the royalty department",
          "generate a commission payment to the agent"));
 end
+
+
+rule "activate new membership"
+    when
+        ProductDetails(type.equalsIgnoreCase("new membership"));
+    then
+        productDetails.setActions(Arrays.asList("Activate new membership",
+         "Send Email notification"));
+end
+
+rule "upgrade membership"
+    when
+        ProductDetails(type.equalsIgnoreCase("upgrade membership"))
+    then
+       productDetails.setActions(Arrays.asList("Upgrade membership",
+         "Send Email notification"));
+ end
+
+rule "Add free videos"
+    when
+        ProductDetails(type.equalsIgnoreCase("video") && name.equalsIgnoreCase("Learning to Ski"))
+    then
+        productDetails.setActions(Arrays.asList("Add Free 'First Aid Video' to Packing Slip"));
+ end
+
+ rule "Buy videos"
+     when
+         ProductDetails(type.equalsIgnoreCase("video")  && !name.equalsIgnoreCase("Learning to Ski"))
+     then
+         productDetails.setActions(Arrays.asList("Purchase a video"));
+  end
