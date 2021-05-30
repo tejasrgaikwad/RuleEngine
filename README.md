@@ -35,11 +35,11 @@ http://localhost:8080/swagger-ui.html
 ######(Note: You can pass multiple products in one request using products array):
 ```json
 {
-    serviceId: "Payment",
-    products: [
+    "serviceId": "Payment",
+    "products": [
         {
-            type:"video",
-            name:"Learning to Ski"
+            "type":"video",
+            "name":"Learning to Ski"
         }
     ]
 }
@@ -49,12 +49,12 @@ http://localhost:8080/swagger-ui.html
 ######(Note: actions object will contain the decision/answer from Rule Engine):
 ```json
 {
-  serviceId: "Payment",
-  products:[
+  "serviceId": "Payment",
+  "products":[
     {
-        type: "Physical",
-        name: "Test",
-        actions: [
+        "type": "Physical",
+        "name": "Test",
+        "actions": [
               "Upgrade membership",
               "Send Email notification"
         ]
