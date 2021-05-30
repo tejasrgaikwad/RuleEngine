@@ -35,13 +35,21 @@ http://localhost:8080/swagger-ui.html
 ######(Note: You can pass multiple products in one request using products array):
 ```json
 {
-    "serviceId": "Payment",
-    "products": [
-        {
-            "type":"video",
-            "name":"Learning to Ski"
-        }
-    ]
+  "productDetails": [
+    {
+      "name": "test book",
+      "type": "book"
+    },
+    {
+      "name": "test product",
+      "type": "physical product"
+    },
+    {
+      "name": "Learning to Ski",
+      "type": "Video"
+    }
+  ],
+  "serviceId": "payment"
 }
 ```
 
@@ -49,17 +57,31 @@ http://localhost:8080/swagger-ui.html
 ######(Note: actions object will contain the decision/answer from Rule Engine):
 ```json
 {
-  "serviceId": "Payment",
-  "products":[
+  "serviceId": "payment",
+  "productDetails": [
     {
-        "type": "Physical",
-        "name": "Test",
-        "actions": [
-              "Upgrade membership",
-              "Send Email notification"
-        ]
+      "name": "test book",
+      "type": "book",
+      "actions": [
+        "create duplicate parking slip for the royalty department",
+        "generate a commission payment to the agent"
+      ]
+    },
+    {
+      "name": "test product",
+      "type": "physical product",
+      "actions": [
+        "generate a packing slip for shipping",
+        "generate a commission payment to the agent"
+      ]
+    },
+    {
+      "name": "Learning to Ski",
+      "type": "Video",
+      "actions": [
+        "Add Free 'First Aid Video' to Packing Slip"
+      ]
     }
   ]
 }
-
 ```
