@@ -15,12 +15,17 @@ Please see below details for how to run the project.
 From cmd:
 1. Go to spring boot project root directory from cmd [RuleEngine/]
 2. Make sure you have java and maven executables in path
-3. run command "mvn clean install" (to build the project)
+3. run command "mvn clean install" (to build the project and run test cases)
 4. run below command to run the project:
-   "java -jar springboot-swagger-test-xxxxx.jar" from target directory.
+   "java -jar target/rule-engine-xxxxx.jar" from target directory.
 
 
 ### Documentation of API:
 
 After running the project, hit below url to access swagger docs
 http://localhost:8080/swagger-ui.html
+
+
+### Frameworks Used:
+1. Spring Boot for Rest API
+2. Drools Business Rule Engine

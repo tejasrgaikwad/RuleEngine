@@ -63,4 +63,108 @@ public class RuleEngineTest {
         String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
         assertEquals(expectedResponseBody, actualResponseBody);
     }
+
+
+
+    /*
+    rule2 "create a duplicate packing slip for the royalty department"
+     */
+    @Test
+    public void verifyScenarioProductTypeBook() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName("xyz");
+        productDetails.setType("book");
+        orderDetails.setProductDetails(Arrays.asList(productDetails));
+
+        MvcResult mvcResult = sendRequest(orderDetails);
+
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+        productDetails.setActions(Arrays.asList("create duplicate parking slip for the royalty department",
+                "generate a commission payment to the agent"));
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
+
+
+
+    /*
+    rule3 "activate new membership"
+     */
+    @Test
+    public void verifyScenarioProductTypeActivateMembership() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName("xyz");
+        productDetails.setType("new membership");
+        orderDetails.setProductDetails(Arrays.asList(productDetails));
+        MvcResult mvcResult = sendRequest(orderDetails);
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+        productDetails.setActions(Arrays.asList("Activate new membership",
+                "Send Email notification"));
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
+
+    /*
+    rule4 "upgrade membership"
+     */
+    @Test
+    public void verifyScenarioProductTypeUpgradeMembership() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName("xyz");
+        productDetails.setType("upgrade membership");
+        orderDetails.setProductDetails(Arrays.asList(productDetails));
+        MvcResult mvcResult = sendRequest(orderDetails);
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+        productDetails.setActions(Arrays.asList("Upgrade membership",
+                "Send Email notification"));
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
+
+    /*
+    rule5  "Add free videos"
+     */
+    @Test
+    public void verifyScenarioProductTypeVideoWithFreeVideos() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName("Learning to ski");
+        productDetails.setType("video");
+        orderDetails.setProductDetails(Arrays.asList(productDetails));
+
+        MvcResult mvcResult = sendRequest(orderDetails);
+
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+        productDetails.setActions(Arrays.asList("Add Free 'First Aid Video' to Packing Slip"));
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
+
+
+    /*
+    rule6  "Buy videos"
+     */
+    @Test
+    public void verifyScenarioProductTypeVideoWith() throws Exception {
+        Order orderDetails = new Order();
+        orderDetails.setServiceId(ServiceId.payment);
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setName("asdfasdf");
+        productDetails.setType("video");
+        orderDetails.setProductDetails(Arrays.asList(productDetails));
+
+        MvcResult mvcResult = sendRequest(orderDetails);
+
+        String actualResponseBody = mvcResult.getResponse().getContentAsString();
+        productDetails.setActions(Arrays.asList("Purchase a video"));
+        String expectedResponseBody = objectMapper.writeValueAsString(orderDetails);
+        assertEquals(expectedResponseBody, actualResponseBody);
+    }
 }
