@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Order {
     private ServiceId serviceId;
     private List<ProductDetails> productDetails = new ArrayList<>();
