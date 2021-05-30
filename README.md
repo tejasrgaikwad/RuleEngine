@@ -29,3 +29,30 @@ http://localhost:8080/swagger-ui.html
 ### Frameworks Used:
 1. Spring Boot for Rest API
 2. Drools Business Rule Engine
+
+
+### Request Body :
+{
+	serviceId: "Payment",
+	products: [
+		{
+			type:"video"
+			name:"Learning to Ski"
+		}
+	]
+}
+
+### Expected Response for above request:
+{
+	serviceId: "Payment",
+	products:[
+		{
+			type:"Physical",
+			name:"Test",
+			**actions: [
+            "Upgrade membership",
+            "Send Email notification"
+         ]**
+		},
+	]
+}
