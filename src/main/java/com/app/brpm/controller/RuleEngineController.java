@@ -11,6 +11,7 @@ public class RuleEngineController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/rules/payments/outcome", produces = "application/json")
     public ResponseEntity<?> fireRules(@RequestBody Order orderDetails) {
+
         return new ResponseEntity<>("Invalid Request " , HttpStatus.BAD_REQUEST);
     }
 }
